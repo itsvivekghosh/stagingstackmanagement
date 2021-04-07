@@ -1,0 +1,19 @@
+/**
+ * @author Vivek Kumar Ghosh
+ *
+ */
+package com.stagingstackmanagement.main.DAO;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.repository.PagingAndSortingRepository;
+
+import com.stagingstackmanagement.main.entities.Instance;
+
+
+public interface InstanceDAO extends JpaRepository<Instance, Long>, JpaSpecificationExecutor<Instance>, PagingAndSortingRepository<Instance, Long> {
+	public List<Instance> findByInstanceNameContainingIgnoreCase(String instanceName);
+	public List<Instance> findAllByOrderByCreatedOnDesc();
+}
